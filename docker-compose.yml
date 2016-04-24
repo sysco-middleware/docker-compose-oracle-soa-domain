@@ -1,0 +1,17 @@
+version: '2'
+services:
+  soa-server:
+    build: soa-server
+    ports:
+     - "8001:8001"
+    depends_on:
+     - soa-database
+     - admin-server
+  admin-server:
+    build: admin-server
+    ports:
+     - "7001:7001"
+    depends_on:
+     - soa-database
+  soa-database:
+    image: syscomiddleware/oracle-soa-domain-database:oraclelinux-12.2.1
