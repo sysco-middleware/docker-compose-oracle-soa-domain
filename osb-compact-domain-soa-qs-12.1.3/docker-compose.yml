@@ -1,0 +1,20 @@
+version: '2'
+services:
+  osb-server:
+    image: syscomiddleware/oracle-soa-domain-osb-server:osb-compact-domain-soa-qs-12.1.3-jdk7-centos7
+    ports:
+      - "8011:8011"
+    environment:
+      MANAGED_SERVER_NAME: osb_server1
+      MANAGED_SERVER_PORT: 8011
+    links:
+      - soa-database
+      - admin-server
+  admin-server:
+    image: syscomiddleware/oracle-soa-domain-admin-server:osb-compact-domain-soa-qs-12.1.3-jdk7-centos7
+    ports:
+     - "7001:7001"
+    links:
+     - soa-database
+  soa-database:
+    image: syscomiddleware/oracle-soa-domain-database:osb-compact-domain-soa-qs-12.1.3-basic-11.2.0.4-se-oraclelinux6.7
