@@ -1,9 +1,9 @@
 version: '2'
 services:
   soa-server:
-    image: syscomiddleware/oracle-soa-domain-osb-server:soa-extended-domain-soa-qs-12.2.1-jdk8-centos7
+    image: syscomiddleware/oracle-soa-domain-managed-server:soa-extended-domain-soa-qs-12.2.1-jdk8-centos7
     ports:
-      - "8001:8001"
+      - "18001:8001"
     environment:
       MANAGED_SERVER_NAME: soa_server1
       MANAGED_SERVER_PORT: 8001
@@ -13,7 +13,7 @@ services:
   admin-server:
     image: syscomiddleware/oracle-soa-domain-admin-server:soa-extended-domain-soa-qs-12.2.1-jdk8-centos7
     ports:
-     - "7001:7001"
+     - "17001:7001"
     links:
      - soa-database
   soa-database:
